@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maudule-Studio-Account{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/style/Account.css">
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>Connexion</h2>
+        <div class="containerForm">
+            <form method="post">
+                <div class="form-group">
+                    <label for="mail">mail :</label>
+                    <input type="email" id="mail" name="mail" value="{{ last_username }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                {% if error %}
+                    <p class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                {% endif %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div>
+                    <button type="submit">Se connecter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

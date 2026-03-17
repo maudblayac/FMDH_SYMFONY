@@ -1,1 +1,188 @@
-{% extends %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Maudule-Studio{% endblock %}
+
+{% block body %}
+    <main>
+        {# START FIRST SECTION HOME #}
+        <section class="premier">
+            <div class="margeL margeT">Welcome on MAUDULE STUDIO</div>
+            <article class="second">
+                <div class="left">
+                    <div class="tit marge">Discover your living dream property </div>
+                    <div class="marge">Working with us and find your dream property. We provide comfortable prices for our client so don't delay.</div>
+                    <div class="bar">
+                        <div class="bar">
+                            <div class="buton">
+                                <div class="buy"> Buy</div>
+                                <div class="buy">Rent</div>
+                            </div>
+                            <div class="search">
+                                <div class="search-bar"></div>
+                                <div class="flex">
+                                    <div class="margeD"><img src="/assets/img/icone/1814106_location_map_marker_icon 1.png" width="33px" height="33px"></div>
+                                    <div>Search by location</div>
+                                </div>
+                                <div class="Bsearch">
+                                    <div><img src="/assets/img/icone/Icon.png"></div>
+                                    <div class="Search">
+                                        <div><img src="/assets/img/icone/search.png"></div>
+                                        <div>Search</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="containere">
+                    <div class="right"></div>
+                </div>
+            </article>
+        </section>
+        {# END FIRST SECTION HOME #}
+
+        {# START SECOND SECTION HOME #}
+        <section class="fond">
+            <div class="box">
+                <div><img src="/assets/img/pageHome/buy.png" width="245px" height="245px"></div>
+                <div class="margeB pub">Buy a property</div>
+                <div>Elevate your property purchase with our precise valuations, broad exposure, and personalized guidance.</div>
+                <div class="find">Find a home</div>
+            </div>
+            <div class="box margeD margeL">
+                <div><img src="/assets/img/pageHome/sale.png" width="245px" height="245px"></div>
+                <div class="margeB pub">Sell or Rent property</div>
+                <div>Explore our sales services: accurate valuation, maximum visibility, personalized support. Sell successfully, choose quality.</div>
+                <div class="find">Place an ad</div>
+            </div>
+            <div class="box">
+                <div><img src="/assets/img/pageHome/property.png"></div>
+                <div class="margeB pub">Rent a property</div>
+                <div>Discover our rental services: diverse choices, straightforward process, dedicated customer service.</div>
+                <div class="find">Find a rental</div>
+            </div>
+        </section>
+        {# ENDSECOND SECTION HOME #}
+
+        {# START SECTION SALE #}
+        <section class="sale">
+            <div class="grent">
+                <div class="title">NEW SALE</div>
+                <div class="stitle margeL">Our most recent projects </div>
+                <div class="see">see everything</div>
+            </div>
+            <div class="containerSale">
+                {% for annonce in annonces_vente %}
+                    <div class="boite">
+                        <div class="boitehaut">
+                            <div class="picture" style="background-image: url('/{{ annonce.frontPicture }}'); --back-picture: url('/{{ annonce.backPicture }}')">
+                                <div class="midlebox">
+                                    <div class="coeur">
+                                    </div>
+                                    <div class="conatinerouge">
+                                        <div class="rouge">SALE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bas">
+                            <div class="nom">
+                                <div class="t">{{ annonce.nom }}</div>
+                                <div>{{ annonce.prix }}</div>
+                            </div>
+                            <div class="bold">{{ annonce.ville }}</div>
+                            <div class="description">{{ annonce.descriptions }}</div>
+                            <div class="cont">CONTACT</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        {# END SECTION SALE #}
+
+        {# START SECTION RENT #}
+        <section class="rent">
+            <div class="grent">
+                <div class="title">NEW RENT</div>
+                <div class="stitle margeL">Our most recent projects </div>
+                <div class="see">see everything</div>
+            </div>
+            <div class="containerSale">
+                {% for annonce in annonces_location %}
+                    <div class="boite">
+                        <div class="boitehaut">
+                            <div class="picture" style="background-image: url('/{{ annonce.frontPicture }}'); --back-picture: url('/{{ annonce.backPicture }}')">
+                                <div class="midlebox">
+                                    <div class="coeur">
+                                    </div>
+                                    <div class="conatinerouge">
+                                        <div class="rouge">RENT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bas">
+                            <div class="nom">
+                                <div class="t">{{ annonce.nom }}</div>
+                                <div>{{ annonce.prix }}</div>
+                            </div>
+                            <div class="bold">{{ annonce.ville }}</div>
+                            <div class="description">{{ annonce.descriptions }}</div>
+                            <div class="cont">CONTACT</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        {# END SECTION RENT #}
+
+        {# START SECTION SOURCING #}
+        <section class="sourcing">
+            <div class="margeT direction">SOURCING</div>
+            <section class="disposition">
+                <div class="container">
+                    <div class="rond house "></div>
+                    <div class="titre margeB">Explore you future home</div>
+                    <div class="stitre">Choose your home with us for a seamless and memorable experience in finding the perfect place to call your own. Discover your perfect home seamlessly with us. From cozy apartments to charming houses, our guided process ensures a memorable and effortless experience. Your dream home is just a step away.</div>
+                </div>
+                <div class="container">
+                    <div class="rond im margeB"></div>
+                    <div class="titre margeB">Discover Your Ideal Apartment</div>
+                    <div class="stitre">Select your ideal apartment effortlessly with us, ensuring a smooth and unforgettable journey in finding your perfect living space. From cozy abodes to stylish residences, each step is guided, making your home selection simple and memorable. Your dream apartment is just a step away with us.</div>
+                </div>
+                <div class="container">
+                    <div class="rond tel margeB"></div>
+                    <div class="titre margeB">Register and post your ads</div>
+                    <div class="stitre">List your properties with us for optimal exposure and a stress-free selling or renting experience. From accurate property assessments to personalized support, we streamline the process for your convenience. Choose us for a seamless and successful real estate journey.</div>
+                </div>
+            </section>
+        </section>
+        {# END SECTION SOURCING #}
+
+        {# START SECTION CONTACT #}
+        <section id="contacte" class="contact">
+            <div class="lefte">
+                <form>
+                    <div>CONTACT US</div>
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" /><br>
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" name="email" /><br>
+                    <label for="interest">Interest by:</label><br>
+                    <select id="interest" name="interest">
+                        <option value="sale">Sale</option>
+                        <option value="rent">Rent</option>
+                        <option value="other">Other</option>
+                    </select><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message"></textarea><br>
+                    <input type="submit" value="Send" />
+                </form>
+            </div>
+            <div class="righte">
+                <div class="contactimg"></div>
+            </div>
+        </section>
+        {# END SECTION CONTACT #}
+    </main>
+{% endblock %}

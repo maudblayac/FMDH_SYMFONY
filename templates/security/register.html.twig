@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maudule-Studio-Account-Signup{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/style/Account.css">
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>Inscription</h2>
+        <div class="containerForm">
+            <form method="post">
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="mail" name="mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                {% for message in app.flashes('error') %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+                <div>
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maudule-Studio-Account{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/style/Account.css">
+{% endblock %}
+
+{% block body %}
+    <section class="account">
+        <div class="">
+            <h1 class="">Bienvenue sur Notre Plateforme de Connexion!</h1>
+            <p class="">
+                Créez un compte pour une expérience personnalisée ! Si vous avez déjà un compte, connectez-vous simplement en utilisant le bouton dédié. Sinon, inscrivez-vous pour bénéficier d'avantages exclusifs : créez vos propres annonces immobilières, accédez à vos favoris et profitez d'une navigation sur mesure. Rejoignez notre communauté dès maintenant et découvrez tout ce que notre plateforme a à offrir !
+            </p>
+            <a href="{{ path('app_login') }}" class="login">
+                Se connecter
+            </a>
+            <a href="{{ path('app_register') }}" class="signup">
+                S'inscire
+            </a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier {{ annonce.nom }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/style/Add.css">
+{% endblock %}
+
+{% block body %}
+    <h2>Modifier l'annonce : {{ annonce.nom }}</h2>
+    <div class="containerForm">
+        <form method="post" enctype="multipart/form-data">
+            <label for="type_transaction">Type de bien :</label>
+            <select id="type_transaction" name="type_transaction">
+                <option value="vente" {{ annonce.typeTransaction == 'vente' ? 'selected' }}>Vente</option>
+                <option value="location" {{ annonce.typeTransaction == 'location' ? 'selected' }}>Location</option>
+            </select><br><br>
+            <label for="property_type">Type de bien :</label>
+            <select id="property_type" name="property_type">
+                <option value="apartment" {{ annonce.propertyType == 'apartment' ? 'selected' }}>Appartement</option>
+                <option value="house" {{ annonce.propertyType == 'house' ? 'selected' }}>Maison</option>
+            </select><br><br>
+            <label for="nom">Nom du bien :</label><br>
+            <input type="text" id="nom" name="nom" value="{{ annonce.nom }}" required><br><br>
+            <label for="ville">Ville :</label><br>
+            <input type="text" id="ville" name="ville" value="{{ annonce.ville }}" required><br><br>
+            <label for="prix">Prix :</label><br>
+            <input type="text" id="prix" name="prix" value="{{ annonce.prix }}" required><br><br>
+            <label for="description">Description :</label><br>
+            <textarea id="description" name="descriptions" rows="4" cols="50" required>{{ annonce.descriptions }}</textarea><br><br>
+            <label for="front_photo">Front (laisser vide pour garder l'actuelle) :</label><br>
+            <input type="file" id="front_photo" name="frontPicture" accept="image/jpeg, image/png"><br><br>
+            <label for="back_photo">Back (laisser vide pour garder l'actuelle) :</label><br>
+            <input type="file" id="back_photo" name="backPicture" accept="image/jpeg, image/png"><br><br>
+            <input type="submit" value="Enregistrer" name="submit">
+        </form>
+    </div>
+{% endblock %}

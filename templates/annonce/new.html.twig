@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maudule-Studio-Add{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/style/Add.css">
+{% endblock %}
+
+{% block body %}
+    <h2>Formulaire de demande de bien immobilier</h2>
+    <div class="containerForm">
+        <form method="post" enctype="multipart/form-data">
+            <label for="type_transaction">Type de bien :</label>
+            <select id="type_transaction" name="type_transaction">
+                <option value="vente">Vente</option>
+                <option value="location">Location</option>
+            </select><br><br>
+            <label for="property_type">Type de bien :</label>
+            <select id="property_type" name="property_type">
+                <option value="apartment">Appartement</option>
+                <option value="house">Maison</option>
+            </select><br><br>
+            <label for="nom">Nom du bien :</label><br>
+            <input type="text" id="nom" name="nom" required><br><br>
+            <label for="ville">Ville :</label><br>
+            <input type="text" id="ville" name="ville" required><br><br>
+            <label for="prix">Prix :</label><br>
+            <input type="text" id="prix" name="prix" required pattern="\d+(\.\d{1,2})?"><br><br>
+            <label for="description">Description :</label><br>
+            <textarea id="description" name="descriptions" rows="4" cols="50" required></textarea><br><br>
+            <label for="front_photo">Front :</label><br>
+            <input type="file" id="front_photo" name="frontPicture" accept="image/jpeg, image/png" required><br><br>
+            <label for="back_photo">Back :</label><br>
+            <input type="file" id="back_photo" name="backPicture" accept="image/jpeg, image/png" required><br><br>
+            <input type="submit" value="Envoyer demande" name="submit">
+            {% for message in app.flashes('error') %}
+                <div class="error">{{ message }}</div>
+            {% endfor %}
+        </form>
+    </div>
+{% endblock %}
