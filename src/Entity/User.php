@@ -26,9 +26,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(name: 'mdp_hash', length: 280)]
     private ?string $password = null;
 
-    #[ORM\Column(type: 'json')]
-    private array $roles = [];
-
     /** @var Collection<int, Annonce> */
     #[ORM\OneToMany(targetEntity: Annonce::class, mappedBy: 'user')]
     private Collection $annonces;
@@ -61,14 +58,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
-        return array_unique($roles);
+        return ['ROLE_USER'];
     }
 
     public function setRoles(array $roles): static
     {
-        $this->roles = $roles;
         return $this;
     }
 

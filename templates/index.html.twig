@@ -78,6 +78,8 @@
                             <div class="picture" style="background-image: url('/{{ annonce.frontPicture }}'); --back-picture: url('/{{ annonce.backPicture }}')">
                                 <div class="midlebox">
                                     <div class="coeur">
+                                        <input type="checkbox" id="coeurCheckbox{{ annonce.id }}">
+                                        <label for="coeurCheckbox{{ annonce.id }}"><img src="/assets/img/icone/290111_favorite_heart_like_love_valentine_icon.svg" alt="Coeur"></label>
                                     </div>
                                     <div class="conatinerouge">
                                         <div class="rouge">SALE</div>
@@ -114,6 +116,8 @@
                             <div class="picture" style="background-image: url('/{{ annonce.frontPicture }}'); --back-picture: url('/{{ annonce.backPicture }}')">
                                 <div class="midlebox">
                                     <div class="coeur">
+                                        <input type="checkbox" id="coeurCheckboxRent_{{ annonce.id }}">
+                                        <label for="coeurCheckboxRent_{{ annonce.id }}"><img src="/assets/img/icone/290111_favorite_heart_like_love_valentine_icon.svg" alt="Coeur"></label>
                                     </div>
                                     <div class="conatinerouge">
                                         <div class="rouge">RENT</div>
@@ -185,4 +189,14 @@
         </section>
         {# END SECTION CONTACT #}
     </main>
+
+    <script>
+        document.querySelectorAll('.containerSale').forEach(function(container) {
+            container.addEventListener('mousemove', function(event) {
+                if (event.buttons === 1) {
+                    container.scrollLeft -= event.movementX;
+                }
+            });
+        });
+    </script>
 {% endblock %}
