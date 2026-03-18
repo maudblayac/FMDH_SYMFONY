@@ -14,6 +14,94 @@
             <div class="listing-subtitle">Discover our selection of houses</div>
         </section>
 
+        <!-- Barre de recherche/filtres réutilisable -->
+        <div class="search-bar-advanced" style="max-width: 900px; width: 100%; margin: 30px auto 30px auto; border-radius: 18px; background: rgba(151,172,179,0.15); box-shadow: 0 2px 12px rgba(151,172,179,0.08); padding: 18px 18px 18px 18px; display: flex; gap: 16px; justify-content: center;">
+            <input type="text" id="searchVille" placeholder="Ville" class="search-input" style="flex:1; min-width:120px;">
+            <select id="searchType" class="search-select" style="flex:1; min-width:120px;">
+                <option value="">Type</option>
+                <option value="apartment">Appartement</option>
+                <option value="house">Maison</option>
+            </select>
+            <select id="searchTransaction" class="search-select" style="flex:1; min-width:120px;">
+                <option value="">Transaction</option>
+                <option value="vente">Vente</option>
+                <option value="location">Location</option>
+            </select>
+            <input type="number" id="searchPrixMin" placeholder="Prix min" class="search-input" min="0" style="flex:1; min-width:120px;">
+            <input type="number" id="searchPrixMax" placeholder="Prix max" class="search-input" min="0" style="flex:1; min-width:120px;">
+            <button id="btnSearchAdvanced" class="search-btn" style="min-width:120px;">Rechercher</button>
+        </div>
+
+        <script>
+        function applyAdvancedFilters() {
+            const ville = document.getElementById('searchVille').value.trim().toLowerCase();
+            const type = document.getElementById('searchType').value;
+            const transaction = document.getElementById('searchTransaction').value;
+            const prixMin = parseInt(document.getElementById('searchPrixMin').value) || 0;
+            const prixMax = parseInt(document.getElementById('searchPrixMax').value) || Infinity;
+
+            const cards = document.querySelectorAll('.listing-card');
+            cards.forEach(function(card) {
+                const cardVille = card.querySelector('.listing-card-city')?.textContent.toLowerCase() || '';
+                const cardType = card.getAttribute('data-type') || '';
+                const cardTransaction = card.getAttribute('data-transaction') || '';
+                const cardPrix = parseInt(card.querySelector('.listing-card-price')?.textContent.replace(/[^0-9]/g, '')) || 0;
+
+                let visible = true;
+                if (ville && !cardVille.includes(ville)) visible = false;
+                if (type && cardType !== type) visible = false;
+                if (transaction && cardTransaction !== transaction) visible = false;
+                if (cardPrix < prixMin || cardPrix > prixMax) visible = false;
+
+                card.style.display = visible ? '' : 'none';
+            });
+        }
+        ['searchVille','searchType','searchTransaction','searchPrixMin','searchPrixMax'].forEach(id => {
+            document.getElementById(id).addEventListener('change', applyAdvancedFilters);
+        });
+        document.getElementById('btnSearchAdvanced').addEventListener('click', applyAdvancedFilters);
+        </script>
+
+        <style>
+        .search-bar-advanced {
+            display: flex;
+            gap: 12px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 24px;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(31,31,31,0.08);
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .search-input, .search-select {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-family: DM;
+            font-size: 16px;
+            background: #f7f7f7;
+            color: #333;
+        }
+        .search-btn {
+            background: rgb(151, 172, 179);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-family: DMT;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-btn:hover {
+            background: rgb(68, 72, 87);
+        }
+        </style>
+
         <section class="listing-grid">
             {# Repeat annonces to fill the page (6 per page) #}
             {% set all_items = [] %}
