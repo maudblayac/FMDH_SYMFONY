@@ -26,4 +26,15 @@ class AnnonceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /** @return Annonce[] */
+    public function findByPropertyType(string $propertyType): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.propertyType = :ptype')
+            ->setParameter('ptype', $propertyType)
+            ->orderBy('a.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

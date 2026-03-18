@@ -7,18 +7,16 @@
 {% endblock %}
 
 {% block body %}
-    <section class="account">
-        <div class="">
-            <h1 class="">Bienvenue sur Notre Plateforme de Connexion!</h1>
-            <p class="">
-                Créez un compte pour une expérience personnalisée ! Si vous avez déjà un compte, connectez-vous simplement en utilisant le bouton dédié. Sinon, inscrivez-vous pour bénéficier d'avantages exclusifs : créez vos propres annonces immobilières, accédez à vos favoris et profitez d'une navigation sur mesure. Rejoignez notre communauté dès maintenant et découvrez tout ce que notre plateforme a à offrir !
+    <section class="auth-page">
+        <div class="auth-card">
+            <h1>Welcome</h1>
+            <p class="auth-subtitle">
+                Create an account for a personalized experience! If you already have an account, simply log in. Otherwise, sign up to enjoy exclusive benefits: create your own listings, access your favorites, and enjoy a tailored browsing experience.
             </p>
-            <a href="{{ path('app_login') }}" class="login">
-                Se connecter
-            </a>
-            <a href="{{ path('app_register') }}" class="signup">
-                S'inscire
-            </a>
+            <div class="auth-links">
+                <a href="{{ path('app_login') }}" class="btn-login">Log in</a>
+                <a href="{{ path('app_register') }}" class="btn-signup">Sign up</a>
+            </div>
         </div>
     </section>
 {% endblock %}

@@ -16,12 +16,12 @@
             <div><img class="logo" onclick="window.location.href='{{ path('home') }}'" src="/assets/img/icone/logo.png"></div>
             <div class="list">
                 {% if not app.user %}
-                    <ol class="h">Apartment</ol>
-                    <ol class="h">House</ol>
+                    <ol class="h" onclick="window.location.href='{{ path('listing_apartments') }}'">Apartment</ol>
+                    <ol class="h" onclick="window.location.href='{{ path('listing_houses') }}'">House</ol>
                     <ol class="h" onclick="window.location.href='{{ path('home') }}#contacte'">Contact US</ol>
                 {% else %}
-                    <ol class="h">Apartment</ol>
-                    <ol class="h">House</ol>
+                    <ol class="h" onclick="window.location.href='{{ path('listing_apartments') }}'">Apartment</ol>
+                    <ol class="h" onclick="window.location.href='{{ path('listing_houses') }}'">House</ol>
                     <ol class="h" onclick="window.location.href='{{ path('annonce_new') }}'">Add</ol>
                     <ol class="h">My post</ol>
                     <ol class="h">My favorite</ol>

@@ -1,31 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Maudule-Studio-Account-Signup{% endblock %}
+{% block title %}Maudule-Studio - Sign up{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="/assets/style/Account.css">
 {% endblock %}
 
 {% block body %}
-    <div>
-        <h2>Inscription</h2>
-        <div class="containerForm">
+    <section class="auth-page">
+        <div class="auth-card">
+            <h1>Sign up</h1>
+            <p class="auth-subtitle">Create your account to start posting listings.</p>
+            {% for message in app.flashes('error') %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
             <form method="post">
                 <div class="form-group">
-                    <label for="email">Email :</label>
-                    <input type="email" id="mail" name="mail" required>
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail" name="mail" required placeholder="your@email.com">
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe :</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Choose a password">
                 </div>
-                {% for message in app.flashes('error') %}
-                    <p class="error">{{ message }}</p>
-                {% endfor %}
-                <div>
-                    <button type="submit">S'inscrire</button>
-                </div>
+                <button type="submit">Sign up</button>
             </form>
+            <div class="auth-footer">
+                Already have an account? <a href="{{ path('app_login') }}">Log in</a>
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

@@ -1,32 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Maudule-Studio-Account{% endblock %}
+{% block title %}Maudule-Studio - Log in{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="/assets/style/Account.css">
 {% endblock %}
 
 {% block body %}
-    <div>
-        <h2>Connexion</h2>
-        <div class="containerForm">
+    <section class="auth-page">
+        <div class="auth-card">
+            <h1>Log in</h1>
+            <p class="auth-subtitle">Sign in to access your listings and favorites.</p>
+            {% if error %}
+                <p class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+            {% endif %}
             <form method="post">
                 <div class="form-group">
-                    <label for="mail">mail :</label>
-                    <input type="email" id="mail" name="mail" value="{{ last_username }}" required>
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail" name="mail" value="{{ last_username }}" required placeholder="your@email.com">
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe :</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Your password">
                 </div>
-                {% if error %}
-                    <p class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
-                {% endif %}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                <div>
-                    <button type="submit">Se connecter</button>
-                </div>
+                <button type="submit">Log in</button>
             </form>
+            <div class="auth-footer">
+                No account yet? <a href="{{ path('app_register') }}">Sign up</a>
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
